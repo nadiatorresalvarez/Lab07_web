@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { register } from "../services/auth.service";
-import { Link } from "react-router-dom";
 import "../components/Register.css";
 
 const Register = () => {
