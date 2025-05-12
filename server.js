@@ -10,7 +10,7 @@ const app = express();
 
 // Permite el acceso a la API desde el cliente React
 const corsOptions = {
-  origin: ["http://localhost:3001", "https://lab07-web.vercel.app/"],
+  origin: ["http://localhost:3001", "lab07-web-lkf7-bqilitjoj-nadiatorres-projects.vercel.app"],
 };
 
 app.use(cors(corsOptions));
