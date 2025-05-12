@@ -36,8 +36,17 @@ app.use("/api/test", userRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: false }).then(async() => {
   console.log("Database synchronized");
+
+  const roles = ["user", "admin", "moderator"];
+  for (const roleName of roles) {
+    const role = await db.role.findOne({ where: { name: roleName } });
+    if (!role) {
+      await db.role.create({ name: roleName });
+      console.log(`Role '${roleName}' created`);
+    }
+  }
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

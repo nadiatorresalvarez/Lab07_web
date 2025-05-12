@@ -23,7 +23,7 @@ export const signup = async (req, res) => {
             email,
             password: hashedPassword,
         });
-        await user.setRoles([userRole]); // Asigna el rol de usuario por defecto
+        await user.setRoles([userRole.id]); // Asigna el rol de usuario por defecto
 
         // devuelve respuesta exitosa con el usuario creado
         res.status(201).json({ message: "Usuario registrado exitosamente!" });
