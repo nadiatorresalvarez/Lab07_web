@@ -1,0 +1,23 @@
+{
+  "name": "lab07_jwt03",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "lab07_jwt03": "file:",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
+  }
+}
