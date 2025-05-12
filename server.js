@@ -9,7 +9,7 @@ import userRoutes from "./app/routes/user.routes.js";
 const app = express();
 
 const corsOptions = {
-  origin: ["http://localhost:3001", "https://lab07-web-lkf7.vercel.app/"],
+  origin: ["http://localhost:3001", "https://lab07-web-lkf7.vercel.app/", "https://lab07-web.onrender.com"],
 };
 
 app.use(cors(corsOptions));
