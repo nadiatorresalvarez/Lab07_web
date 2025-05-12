@@ -1,7 +1,6 @@
 import db from "../models/index.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-
 import authConfig from "../config/auth.config.js";
 
 const { user: User, role: Role } = db;
@@ -22,11 +21,22 @@ export const signup = async (req, res) => {
             username,
             email,
             password: hashedPassword,
+            roles: [userRole.id],
         });
-        await user.setRoles([userRole.id]); // Asigna el rol de usuario por defecto
-
-        // devuelve respuesta exitosa con el usuario creado
-        res.status(201).json({ message: "Usuario registrado exitosamente!" });
+        if (roles) {
+        const foundRoles = await Role.findAll({
+            where: {
+                name: roles,
+            },
+        });
+        const result = await user.setRoles(foundRoles);
+        if (result) {
+            res.send({ message: "Usuario registrado exitosamente!" });
+        }
+        } else {
+            await user.setRoles([userRole.id]); // user role = 1
+            res.send({ message: "Usuario registrado exitosamente!" });
+        }
     } catch (error) {
         // Manejar errores y responder con un mensaje de error
         res.status(500).json({ message: error.message });
