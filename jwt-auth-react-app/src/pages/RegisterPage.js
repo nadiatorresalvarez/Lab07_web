@@ -9,18 +9,14 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
-    setIsLoading(true);
 
-    // Validaciones del formulario
     if (!username || !email || !password) {
       setError("Todos los campos son obligatorios.");
-      setIsLoading(false);
       return;
     }
 
@@ -36,8 +32,6 @@ const Register = () => {
       setError(
         error.response?.data?.message || "Error al registrar el usuario."
       );
-    } finally {
-      setIsLoading(false);
     }
   };
 
